@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shopping.dao.UserDao">
+    <resultMap id="f" type="com.shopping.pojo.User">
+        <id property="userId" column="user_id"></id>
+        <result property="userName" column="user_name"></result>
+    </resultMap>
+    <select id="findById" resultMap="f">
+        select user_id,user_name
+        from `user`
+        where user_id = #{uid}
+    </select>
+</mapper>
