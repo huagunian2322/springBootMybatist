@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootmybatist5.mapper.OrderMapper">
+
+    <insert id="add">
+        insert into `order` (order_name,order_price,order_user_id)
+        values (#{order.orderName},#{order.orderPrice},#{order.orderUserId})
+    </insert>
+    <update id="update">
+        update `order`
+        set order_name = #{order3.orderName},order_price = #{order3.orderPrice}
+        where order_id = #{order3.orderId}
+    </update>
+    <delete id="del">
+        delete
+        from `order`
+        where order_id = #{id};
+    </delete>
+    <resultMap id="f" type="com.example.springbootmybatist5.pojo.Order">
+        <id column="order_id" property="orderId"></id>
+        <result column="order_name" property="orderName"></result>
+        <result column="order_price" property="orderPrice"></result>
+        <result column="order_user_id" property="orderUserId"></result>
+    </resultMap>
+    <select id="find" resultMap="f">
+        select order_id,order_name,order_price,order_user_id
+        from `order`
+        where order_id = #{id}
+    </select>
+    <resultMap id="f2" type="com.example.springbootmybatist5.pojo.Order">
+        <id column="order_id" property="orderId"></id>
+        <result column="order_name" property="orderName"></result>
+        <result column="order_price" property="orderPrice"></result>
+        <result column="order_user_id" property="orderUserId"></result>
+    </resultMap>
+    <select id="findAll" resultMap="f2">
+        select order_id,order_name,order_price,order_user_id from `order`
+    </select>
+</mapper>
